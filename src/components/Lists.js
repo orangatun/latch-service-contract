@@ -13,13 +13,7 @@ function UL(data, index) {
     data.children.forEach((child, index) => {
       if(child.hasOwnProperty("type")) {
       switch(child.type) {
-        case 'h4': children.push(Header4(child, index, marks)); break;
-        case 'p': children.push(Paragraph(child, index, marks)); break;
         case 'li': children.push(LI(child, index, marks)); break;
-        case 'lic': children.push(LIC(child, index, marks)); break;
-        case 'ul': children.push(UL(child, index, marks)); break;
-        case 'block': children.push(Block(child, index, marks)); break;
-        case 'clause': children.push(Clause(child, index, marks)); break;
         default: console.log(child.type);
       }
     } else {
@@ -27,11 +21,11 @@ function UL(data, index) {
     }
     })
     return (
-      <li key={index} style={{ 
+      <ul key={index} style={{ 
         whiteSpace: 'pre-line',
         fontStyle: marks.italics? "italics":"normal", 
         fontWeight: marks.bold? "bold":"normal",
-        textDecorationLine: marks.underline? "underline":"none"}}> {children}</li>
+        textDecorationLine: marks.underline? "underline":"none"}}> {children}</ul>
     )
   }
   
@@ -42,18 +36,11 @@ function UL(data, index) {
     let marks = {bold: false, italics: false, underline: false};
   
     let children = [];
-    // children.push(clauseIndex++ +". ");
     if(data.hasOwnProperty("bold") && data.bold===true) marks.bold=true;
   
     data.children.forEach((child, index) => {
       switch(child.type) {
-        case 'h4': children.push(Header4(child, index, marks)); break;
-        case 'p': children.push(Paragraph(child, index, marks)); break;
-        case 'li': children.push(LI(child, index, marks)); break;
-        case 'lic': children.push(LIC(child, index, marks)); break;
-        case 'ul': children.push(UL(child, index, marks)); break;
-        case 'block': children.push(Block(child, index, marks)); break;
-        case 'clause': children.push(Clause(child, index, marks)); break;
+        case 'lic': children.push(Paragraph(child, index, marks)); break;
         default: children.push(PText(child, index, marks)); console.log(child.type);
       }
     })

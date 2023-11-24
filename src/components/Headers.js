@@ -16,7 +16,11 @@ function Header1(data, index) {
 function Header4(data, index) {
   let marks = {bold: false, italics: false, underline: false};
 
-  if(data.hasOwnProperty("bold") && data.bold===true) marks.bold=true;
+
+
+  if(data.children[0].hasOwnProperty("bold") && data.children[0].bold===true) marks.bold=true;
+  if(data.children[0].hasOwnProperty("underline") && data.children[0].underline===true) marks.underline=true;
+
   return (
     <h4 alt="header4" className="title" key = {index} 
     style={{ 

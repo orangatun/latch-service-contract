@@ -13,7 +13,7 @@ function Block(data, index) {
       case 'h1': children.push(Header1(child, index, marks)); break;
       case 'p': children.push(Paragraph(child, index, marks)); break;
       case 'block': children.push(Block(child, index, marks)); break;
-      // case 'clause': children.push(Clause(child, index, marks)); break;
+      case 'clause': children.push(Clause(child, index, marks)); break;
       default: console.log(child.type);
     }
   })

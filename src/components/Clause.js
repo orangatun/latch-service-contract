@@ -14,11 +14,11 @@ function Clause(data, index) {
       switch(child.type) {
         case 'h4': children.push(Header4(child, index, marks)); break;
         case 'p': children.push(Paragraph(child, index, marks)); break;
-        case 'li': children.push(LI(child, index, marks)); break;
-        case 'lic': children.push(LIC(child, index, marks)); break;
+        // case 'li': children.push(LI(child, index, marks)); break;
+        // case 'lic': children.push(LIC(child, index, marks)); break;
         case 'ul': children.push(UL(child, index, marks)); break;
-        case 'block': children.push(Block(child, index, marks)); break;
-        case 'clause': children.push(Clause(child, index, marks)); break;
+        // case 'block': children.push(Block(child, index, marks)); break;
+        // case 'clause': children.push(Clause(child, index, marks)); break;
         default: console.log(child.type);
       }
     })
