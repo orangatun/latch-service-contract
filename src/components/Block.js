@@ -2,7 +2,7 @@ import { Header1} from "./Headers";
 import { Paragraph } from "./Paragraphs";
 import { Clause } from "./Clause";
 
-function Block(data, index) {
+function Block(data, index, clauseCount) {
   let marks = {bold: false, italics: false, underline: false};
 
   let children = [];
@@ -10,10 +10,10 @@ function Block(data, index) {
 
   data.children.forEach((child, index) => {
     switch(child.type) {
-      case 'h1': children.push(Header1(child, index, marks)); break;
-      case 'p': children.push(Paragraph(child, index, marks)); break;
-      case 'block': children.push(Block(child, index, marks)); break;
-      case 'clause': children.push(Clause(child, index, marks)); break;
+      case 'h1': children.push(Header1(child, index, clauseCount)); break;
+      case 'p': children.push(Paragraph(child, index, clauseCount)); break;
+      case 'block': children.push(Block(child, index, clauseCount)); break;
+      case 'clause': children.push(Clause(child, index, clauseCount)); break;
       default: console.log(child.type);
     }
   })

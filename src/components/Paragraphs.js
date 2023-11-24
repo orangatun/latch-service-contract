@@ -2,7 +2,7 @@ import { Clause } from "./Clause";
 import Mention from "./Mentions";
 
 
-function Paragraph(data, index) {
+function Paragraph(data, index, clauseCount) {
     let marks = {bold: false, italics: false, underline: false};
   
     if(data.hasOwnProperty("bold") && data.bold===true) marks.bold=true;
@@ -12,9 +12,9 @@ function Paragraph(data, index) {
     data.children.forEach((text, index) => {
       if(text.hasOwnProperty("type")) {
         switch(text.type) {
-            case "clause": children.push(Clause(text, index, marks)); break;
-            case "p": children.push(Paragraph(text, index, marks)); break;
-            default:  children.push(Mention(text, index, marks));
+            case "clause": children.push(Clause(text, index, clauseCount)); break;
+            case "p": children.push(Paragraph(text, index, clauseCount)); break;
+            default:  children.push(Mention(text, index, clauseCount));
         }
       }
       else children.push(PText(text, index, marks));

@@ -4,7 +4,7 @@ import { LI, UL, LIC } from "./Lists";
 import { Block } from "./Block";
 
 
-function Clause(data, index) {
+function Clause(data, index, clauseCount) {
 
     let marks = {bold: false, italics: false, underline: false};
 
@@ -15,21 +15,21 @@ function Clause(data, index) {
     console.log(data, index);
     data.children.forEach((child, index) => {
       switch(child.type) {
-        case 'h4': children.push(Header4(child, index, marks)); break;
-        case 'p': children.push(Paragraph(child, index, marks)); break;
+        case 'h4': children.push(Header4(child, index, clauseCount)); break;
+        case 'p': children.push(Paragraph(child, index, clauseCount)); break;
         // case 'li': children.push(LI(child, index, marks)); break;
         // case 'lic': children.push(LIC(child, index, marks)); break;
-        case 'ul': children.push(UL(child, index, marks)); break;
+        case 'ul': children.push(UL(child, index, clauseCount)); break;
         // case 'block': children.push(Block(child, index, marks)); break;
-        case 'clause': children.push(Clause(child, index, marks)); break;
+        case 'clause': children.push(Clause(child, index, clauseCount)); break;
         default: console.log(child.type);
       }
     })
   
     return (
       <>
-      <ol> 
-      <li key = {index} className='block clause'> 
+      <ol start={clauseCount.count++}> 
+      <li key = {clauseCount.count} className='block clause'> 
         { children }
         
       </li>

@@ -4,7 +4,7 @@ import { Paragraph } from "./Paragraphs";
 import { Block } from "./Block";
 import { Clause } from "./Clause";
 
-function Mention(data, color, index) {
+function Mention(data, color, clauseCount) {
     let marks = {bold: false, italics: false, underline: false};
   
     let children = [];
@@ -13,10 +13,10 @@ function Mention(data, color, index) {
     // console.log(data);
     data.children.forEach((child, index) => {
       switch(child.type) {
-        case 'h1': children.push(Header1(child, index, marks)); break;
-        case 'p': children.push(Paragraph(child, index, marks)); break;
-        case 'block': children.push(Block(child, index, marks)); break;
-        case 'clause': children.push(Clause(child, index, marks)); break;
+        case 'h1': children.push(Header1(child, index, clauseCount)); break;
+        case 'p': children.push(Paragraph(child, index, clauseCount)); break;
+        case 'block': children.push(Block(child, index, clauseCount)); break;
+        case 'clause': children.push(Clause(child, index, clauseCount)); break;
         case undefined: children.push(MentionText(child, index, data.color)); break;
         default: console.log(child.type);
       }

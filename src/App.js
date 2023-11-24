@@ -5,13 +5,13 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-
+  let clauseCount = {count:0};
   console.log(input);
   let blocksList = [];
   let marks = {bold: false, italics: false, underline: false};
   
   input.forEach((block, index)=> {
-    blocksList.push(Block(block, index, marks));
+    blocksList.push(Block(block, index, clauseCount, marks));
   });
   return (
     blocksList
