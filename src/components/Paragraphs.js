@@ -22,6 +22,8 @@ function PText(data, index) {
     let marks = {bold: false, italics: false, underline: false};
   
     if(data.hasOwnProperty("bold") && data.bold===true) marks.bold=true;
+    if(data.hasOwnProperty("underline") && data.underline===true) marks.underline=true;
+
     return (
       <span key={index} style={{ 
         whiteSpace: 'pre-line',

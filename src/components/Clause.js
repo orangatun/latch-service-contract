@@ -2,10 +2,13 @@ import { Header4 } from "./Headers";
 import { Paragraph } from "./Paragraphs";
 import { LI, UL, LIC } from "./Lists";
 import { Block } from "./Block";
+import { useState } from "react";
+
 
 function Clause(data, index) {
+
     let marks = {bold: false, italics: false, underline: false};
-  
+
     let children = [];
     // children.push(clauseIndex++ +". ");
     if(data.hasOwnProperty("bold") && data.bold===true) marks.bold=true;
@@ -24,11 +27,14 @@ function Clause(data, index) {
     })
   
     return (
+      <>
       <ol>
       <li key = {index} className='block clause'> 
         { children }
+        
       </li>
       </ol>
+      </>
     )
   }
 

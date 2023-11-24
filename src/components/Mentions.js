@@ -10,7 +10,7 @@ function Mention(data, color, index) {
     let children = [];
   
     if(data.hasOwnProperty("bold") && data.bold===true) marks.bold=true;
-    console.log(data);
+    // console.log(data);
     data.children.forEach((child, index) => {
       switch(child.type) {
         case 'h1': children.push(Header1(child, index, marks)); break;
